@@ -110,6 +110,9 @@ dependencies
 ### Thank You Page
 ![Thank You Page](public/screenshot-thank-you-page.png)
 
+### Error Page
+![Error You Page](public/screenshot-Error-page.png)
+
 ---
 
 ## Future Enhancements

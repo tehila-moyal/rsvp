@@ -4,10 +4,6 @@ const bodyParser = require('body-parser');
 const app = express();
 
 let port= process.env.PORT || 3052;
-console.log("***********************");
-
-console.log(process.env.PORT );
-console.log("***********************");
 
 let nodeEnv = process.env.NODE_ENV.toLowerCase();
 global.hostingDir =  nodeEnv==='development' ? '' : '/tehila/08-NodeJS-SQL-plants';
@@ -48,7 +44,9 @@ app.post('/rsvp', (req, res) => {
   db.query(query, [name, email, attending], (err) => {
     if (err) {
       console.error('Error saving RSVP:', err);
-      res.status(500).send('Error saving RSVP.');
+      // res.status(500).send('Error saving RSVP.');
+      res.redirect('/error');
+
       return;
     }
     res.redirect('/thank-you');
@@ -57,6 +55,10 @@ app.post('/rsvp', (req, res) => {
 
 app.get('/thank-you', (req, res) => {
   res.render('thank-you');
+});
+
+app.get('/error', (req, res) => {
+  res.render('err');
 });
 
 app.listen(port, () => {
